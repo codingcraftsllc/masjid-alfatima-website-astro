@@ -19,5 +19,8 @@
     "@astrojs/sitemap": "^3.2.2",
     "sass": "^1.97.0",
     "typescript": "^5.7.2"
+  },
+  "overrides": {
+    "path-to-regexp": "^6.3.0"
   }
 }
