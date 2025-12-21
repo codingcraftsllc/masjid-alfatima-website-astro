@@ -7,6 +7,18 @@
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   background-color: var(--color-bg);
 
+  &-title {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    color: var(--color-secondary);
+    margin-bottom: var(--space-2xl);
+    text-align: center;
+    font-weight: var(--font-weight-bold);
+
+    @media (max-width: 640px) {
+      margin-bottom: var(--space-xl);
+    }
+  }
+
   .prayer-grid {
     max-width: var(--container-max-width);
     margin: 0 auto;

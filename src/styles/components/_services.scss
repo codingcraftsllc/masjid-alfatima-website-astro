@@ -205,21 +205,33 @@
 }
 
 .services-carousel-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: var(--color-border);
+  position: relative;
+  width: 48px;
+  height: 48px;
   border: none;
   cursor: pointer;
   transition: all var(--transition-base);
   padding: 0;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  &:hover {
+  &::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--color-border);
+    transition: all var(--transition-base);
+  }
+
+  &:hover::before {
     background-color: var(--color-primary);
     transform: scale(1.2);
   }
 
-  &.active {
+  &.active::before {
     background-color: var(--color-primary);
     width: 32px;
     border-radius: 6px;

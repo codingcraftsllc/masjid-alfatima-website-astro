@@ -1,4 +1,3 @@
 # https://www.robotstxt.org/robotstxt.html
-# Disallow all crawlers - Site is password protected
 User-agent: *
-Disallow: /
+Allow: /
