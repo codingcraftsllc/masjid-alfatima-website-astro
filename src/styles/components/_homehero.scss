@@ -97,6 +97,7 @@
   > div:last-child {
     flex: 1;
     max-width: 690px;
+    aspect-ratio: 690 / 425;
 
     @media (max-width: 991px) {
       max-width: 500px;
@@ -112,6 +113,7 @@
       height: auto;
       border-radius: var(--radius-md);
       box-shadow: var(--shadow-md);
+      display: block;
     }
   }
 }
