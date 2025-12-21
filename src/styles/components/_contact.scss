@@ -149,7 +149,7 @@
     width: fit-content;
     margin-top: var(--space-lg);
     padding: 1rem 2.5rem;
-    background-color: var(--color-primary);
+    background-color: var(--color-secondary);
     color: var(--color-white);
     font-weight: var(--font-weight-semibold);
     font-size: var(--font-size-lg);
@@ -159,7 +159,7 @@
     box-shadow: 0 4px 14px rgba(58, 191, 223, 0.3);
 
     &:hover {
-      background-color: var(--color-primary-dark);
+      background-color: var(--color-secondary-dark);
       transform: translateY(-2px);
       box-shadow: 0 6px 20px rgba(58, 191, 223, 0.4);
     }
@@ -368,7 +368,7 @@
     width: fit-content;
     margin-top: var(--space-lg);
     padding: 1rem 2.5rem;
-    background-color: var(--color-primary);
+    background-color: var(--color-secondary);
     color: var(--color-white);
     font-weight: var(--font-weight-semibold);
     font-size: var(--font-size-lg);

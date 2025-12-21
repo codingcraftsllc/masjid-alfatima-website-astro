@@ -54,10 +54,10 @@
     }
 
     &.active {
-      background: var(--color-primary);
-      border-color: var(--color-primary);
+      background: var(--color-secondary);
+      border-color: var(--color-secondary);
       transform: scale(1.05);
-      box-shadow: 0 8px 24px rgba(58, 191, 223, 0.4);
+      box-shadow: 0 8px 24px rgba(30, 58, 95, 0.4);
 
       h3 {
         color: var(--color-white);
