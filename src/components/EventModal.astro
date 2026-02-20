@@ -31,6 +31,34 @@
   </div>
 </div>
 
+<div id="donation-modal" class="event-modal">
+  <div class="event-modal-overlay"></div>
+  <div class="event-modal-content donation-modal-content">
+    <button class="event-modal-close" aria-label="Close modal">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <div class="donation-modal-body">
+      <div class="donation-modal-icon">&#9770;</div>
+      <h2>Support Our Masjid This Ramadan</h2>
+      <p>Your generous contribution helps us maintain our programs, services, and community activities throughout this blessed month.</p>
+      <a href="/donation" class="donation-modal-btn">Donate Now</a>
+    </div>
+  </div>
+</div>
+
 <style>
   .event-modal {
     position: fixed;
@@ -131,6 +159,56 @@
     object-fit: contain;
   }
 
+  .donation-modal-content {
+    max-width: 480px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+
+  .donation-modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .donation-modal-icon {
+    font-size: 3rem;
+    color: var(--color-primary, #0a8ca8);
+  }
+
+  .donation-modal-body h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--color-secondary, #1e3a5f);
+    line-height: 1.3;
+  }
+
+  .donation-modal-body p {
+    margin: 0;
+    color: var(--color-text-light, #555);
+    line-height: 1.6;
+    font-size: 1rem;
+  }
+
+  .donation-modal-btn {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.85rem 2.5rem;
+    background-color: var(--color-primary, #0a8ca8);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .donation-modal-btn:hover {
+    background-color: var(--color-primary-dark, #087087);
+    transform: translateY(-2px);
+  }
+
   @media (max-width: 768px) {
     .event-modal-content {
       max-width: 95%;
@@ -156,37 +234,66 @@
 </style>
 
 <script>
-  // Show modal on page load
   document.addEventListener("DOMContentLoaded", () => {
-    const modal = document.getElementById("event-modal");
-    const closeButton = modal?.querySelector(".event-modal-close");
-    const overlay = modal?.querySelector(".event-modal-overlay");
+    const eventModal = document.getElementById("event-modal");
+    const donationModal = document.getElementById("donation-modal");
 
-    if (!modal) return;
+    // Helper to set up close handlers for a modal
+    function setupModal(modal: HTMLElement, onClose: () => void) {
+      const closeButton = modal.querySelector(".event-modal-close");
+      const overlay = modal.querySelector(".event-modal-overlay");
 
-    // Show modal after a short delay
-    setTimeout(() => {
-      modal.classList.add("active");
-      document.body.style.overflow = "hidden";
-    }, 500);
+      const close = () => {
+        modal.classList.remove("active");
+        document.body.style.overflow = "";
+        onClose();
+      };
 
-    // Close modal function
-    const closeModal = () => {
-      modal.classList.remove("active");
-      document.body.style.overflow = "";
-    };
+      closeButton?.addEventListener("click", close);
+      overlay?.addEventListener("click", close);
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.classList.contains("active")) {
+          close();
+        }
+      });
+    }
 
-    // Close on button click
-    closeButton?.addEventListener("click", closeModal);
-
-    // Close on overlay click
-    overlay?.addEventListener("click", closeModal);
-
-    // Close on ESC key
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && modal.classList.contains("active")) {
-        closeModal();
+    // Show donation modal
+    function showDonationModal() {
+      if (!donationModal || sessionStorage.getItem("donation-modal-shown")) {
+        donationModal?.remove();
+        return;
       }
-    });
+      setTimeout(() => {
+        donationModal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }, 400);
+    }
+
+    // Donation modal close handler (must be set up before event modal logic)
+    if (donationModal) {
+      setupModal(donationModal, () => {
+        sessionStorage.setItem("donation-modal-shown", "true");
+      });
+    }
+
+    // Event modal logic
+    if (eventModal) {
+      if (sessionStorage.getItem("event-modal-shown")) {
+        eventModal.remove();
+        showDonationModal();
+        return;
+      }
+
+      setTimeout(() => {
+        eventModal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }, 500);
+
+      setupModal(eventModal, () => {
+        sessionStorage.setItem("event-modal-shown", "true");
+        showDonationModal();
+      });
+    }
   });
 </script>
