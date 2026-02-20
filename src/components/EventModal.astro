@@ -258,40 +258,38 @@
       });
     }
 
-    // Show donation modal
+    // Show donation modal after event modal closes
     function showDonationModal() {
-      if (!donationModal || sessionStorage.getItem("donation-modal-shown")) {
-        donationModal?.remove();
-        return;
-      }
+      if (!donationModal) return;
       setTimeout(() => {
         donationModal.classList.add("active");
         document.body.style.overflow = "hidden";
       }, 400);
     }
 
-    // Donation modal close handler (must be set up before event modal logic)
-    if (donationModal) {
-      setupModal(donationModal, () => {
-        sessionStorage.setItem("donation-modal-shown", "true");
-      });
+    // Already shown this session — remove both and exit
+    if (sessionStorage.getItem("modals-shown")) {
+      eventModal?.remove();
+      donationModal?.remove();
+      return;
     }
 
-    // Event modal logic
-    if (eventModal) {
-      if (sessionStorage.getItem("event-modal-shown")) {
-        eventModal.remove();
-        showDonationModal();
-        return;
-      }
+    // Mark as shown for this session
+    sessionStorage.setItem("modals-shown", "true");
 
+    // Donation modal close handler
+    if (donationModal) {
+      setupModal(donationModal, () => {});
+    }
+
+    // Event modal: show once per session
+    if (eventModal) {
       setTimeout(() => {
         eventModal.classList.add("active");
         document.body.style.overflow = "hidden";
       }, 500);
 
       setupModal(eventModal, () => {
-        sessionStorage.setItem("event-modal-shown", "true");
         showDonationModal();
       });
     }
