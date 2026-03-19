@@ -2,6 +2,7 @@
 import Header from "../components/layout/Header.astro";
 import Footer from "../components/footer/Footer.astro";
 import EventModal from "../components/EventModal.astro";
+import ZakatFitrahModal from "../components/ZakatFitrahModal.astro";
 import "../styles/global.scss";
 
 interface Props {
@@ -51,7 +52,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="generator" content={Astro.generator} />
   </head>
   <body>
-    <EventModal />
+    <!-- <EventModal /> -->
+    <ZakatFitrahModal />
     <Header />
     <main>
       <slot />

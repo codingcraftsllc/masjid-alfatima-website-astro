@@ -2,7 +2,6 @@
 // Header component with logo, navigation, and CTA button
 const navLinks = [
   { href: "/school", label: "Al-Fatimah School" },
-  { href: "/support-us", label: "Donate" },
   { href: "/about", label: "About Us" },
   { href: "/resources", label: "Resources" },
   { href: "/calendar", label: "Calendar" },
@@ -42,8 +41,12 @@ const currentPath = Astro.url.pathname;
       </ul>
     </nav>
 
-    <!-- Contact Button -->
+    <!-- CTA Buttons -->
     <div class="header__cta">
+      <button class="header__btn header__btn--zakat" onclick="window.openZakatModal && window.openZakatModal()">
+        Zakat-ul-Fitrah
+      </button>
+      <a href="/support-us" class="header__btn header__btn--donate">Donate</a>
       <a href="/contact" class="header__btn">Contact Us</a>
     </div>
 
@@ -76,6 +79,14 @@ const currentPath = Astro.url.pathname;
             </li>
           ))
         }
+        <li class="header__mobile-nav-item header__mobile-nav-item--cta">
+          <button class="header__mobile-btn header__mobile-btn--zakat" onclick="window.openZakatModal && window.openZakatModal()">
+            Zakat-ul-Fitrah
+          </button>
+        </li>
+        <li class="header__mobile-nav-item header__mobile-nav-item--cta">
+          <a href="/support-us" class="header__mobile-btn header__mobile-btn--donate">Donate</a>
+        </li>
         <li class="header__mobile-nav-item header__mobile-nav-item--cta">
           <a href="/contact" class="header__mobile-btn">Contact Us</a>
         </li>

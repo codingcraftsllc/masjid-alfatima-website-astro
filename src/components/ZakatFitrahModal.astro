@@ -1,0 +1,254 @@
+---
+// Zakat-ul-Fitrah Modal Component
+// Opens from navbar button, shows payment categories with single PayPal hosted button
+---
+
+<div id="zakat-fitrah-modal" class="zakat-modal" aria-hidden="true" role="dialog" aria-labelledby="zakat-modal-title">
+  <div class="zakat-modal__overlay"></div>
+  <div class="zakat-modal__content">
+    <button class="zakat-modal__close" aria-label="Close modal">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
+    <div class="zakat-modal__header">
+      <h2 id="zakat-modal-title">Zakat-ul-Fitrah</h2>
+      <p class="zakat-modal__amount">$17 per person</p>
+    </div>
+
+    <div class="zakat-modal__categories">
+      <ul class="zakat-modal__list">
+        <li>Fitria Syed</li>
+        <li>Fitria Non-Syed</li>
+        <li>Fidyiah</li>
+      </ul>
+    </div>
+
+    <div class="zakat-modal__paypal">
+      <div id="paypal-container-NLVRCBSD2N8JN"></div>
+    </div>
+
+    <div class="zakat-modal__zelle">
+      <p>You can also pay via <strong>Zelle</strong>:</p>
+      <span class="zakat-modal__zelle-email">lja786@gmail.com</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .zakat-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .zakat-modal.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .zakat-modal__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+  }
+
+  .zakat-modal__content {
+    position: relative;
+    width: 90%;
+    max-width: 560px;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: white;
+    border-radius: 12px;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: zakatSlideIn 0.4s ease-out;
+  }
+
+  @keyframes zakatSlideIn {
+    from {
+      transform: scale(0.9) translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .zakat-modal__close {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 2px solid #333;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    z-index: 1;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .zakat-modal__close:hover {
+    background-color: #f44336;
+    border-color: #f44336;
+    color: white;
+    transform: rotate(90deg);
+  }
+
+  .zakat-modal__close svg {
+    pointer-events: none;
+  }
+
+  .zakat-modal__header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .zakat-modal__header h2 {
+    margin: 0 0 0.25rem;
+    font-size: 1.6rem;
+    color: var(--color-secondary, #1e3a5f);
+  }
+
+  .zakat-modal__amount {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--color-primary, #0a8ca8);
+    font-weight: 600;
+  }
+
+  .zakat-modal__categories {
+    margin-bottom: 1.5rem;
+  }
+
+  .zakat-modal__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .zakat-modal__list li {
+    padding: 0.5rem 1.25rem;
+    background-color: #f0f7fa;
+    border-radius: 6px;
+    font-weight: 600;
+    color: var(--color-secondary, #1e3a5f);
+    font-size: 0.95rem;
+  }
+
+  .zakat-modal__paypal {
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+.zakat-modal__zelle {
+    text-align: center;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 1.25rem;
+  }
+
+  .zakat-modal__zelle p {
+    margin: 0 0 0.5rem;
+    font-size: 0.95rem;
+    color: #555;
+  }
+
+  .zakat-modal__zelle-email {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background-color: #f0f7fa;
+    border-radius: 6px;
+    font-weight: 600;
+    color: var(--color-secondary, #1e3a5f);
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+  }
+
+  @media (max-width: 768px) {
+    .zakat-modal__content {
+      width: 95%;
+      padding: 1.5rem 1rem;
+    }
+
+    .zakat-modal__close {
+      width: 36px;
+      height: 36px;
+      top: -10px;
+      right: -10px;
+    }
+
+    .zakat-modal__header h2 {
+      font-size: 1.35rem;
+    }
+  }
+</style>
+
+<script
+  src="https://www.paypal.com/sdk/js?client-id=BAAeSJCBHDUtsJs0VFt84Bx8_U_kOZHOrxWQ-wbpspeA2yDR1DyoC_3y6D8RhTtt01B6NIHFEtqjuYVDo8&components=hosted-buttons&enable-funding=venmo&currency=USD"
+  is:inline
+></script>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", function () {
+    var modal = document.getElementById("zakat-fitrah-modal");
+    if (!modal) return;
+
+    var closeBtn = modal.querySelector(".zakat-modal__close");
+    var overlay = modal.querySelector(".zakat-modal__overlay");
+
+    function openModal() {
+      modal.classList.add("active");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeModal() {
+      modal.classList.remove("active");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    window.openZakatModal = openModal;
+
+    if (window.paypal && window.paypal.HostedButtons) {
+      paypal.HostedButtons({
+        hostedButtonId: "NLVRCBSD2N8JN",
+      }).render("#paypal-container-NLVRCBSD2N8JN");
+    }
+
+    closeBtn && closeBtn.addEventListener("click", closeModal);
+    overlay && overlay.addEventListener("click", closeModal);
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && modal.classList.contains("active")) {
+        closeModal();
+      }
+    });
+  });
+</script>
