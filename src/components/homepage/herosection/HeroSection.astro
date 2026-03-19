@@ -1,23 +1,6 @@
 ---
 import { Image } from "astro:assets";
 
-// Get current date
-const now = new Date();
-
-// Georgian date formatting
-const georgianDate = now.toLocaleDateString("en-US", {
-  weekday: "long",
-  year: "numeric",
-  month: "long",
-  day: "numeric",
-});
-
-// Hijri date formatting using built-in Intl API (Umm al-Qura calendar)
-const hijriDate = new Intl.DateTimeFormat("en-US-u-ca-islamic-umalqura", {
-  day: "numeric",
-  month: "long",
-  year: "numeric",
-}).format(now);
 ---
 
 <section class="home-hero">
@@ -29,10 +12,6 @@ const hijriDate = new Intl.DateTimeFormat("en-US-u-ca-islamic-umalqura", {
     </p>
     <a href="/donation">Donate</a>
 
-    <div class="dates">
-      <span class="date-value">{georgianDate}</span>
-      <span class="date-value">{hijriDate}</span>
-    </div>
   </div>
   <div>
     <Image
