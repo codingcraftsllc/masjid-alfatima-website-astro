@@ -3,9 +3,14 @@
   "type": "module",
   "version": "1.0.0",
   "scripts": {
+    "check:configs": "node scripts/check-config-integrity.mjs",
+    "predev": "node scripts/check-config-integrity.mjs",
     "dev": "astro dev --host",
+    "prestart": "node scripts/check-config-integrity.mjs",
     "start": "astro dev --host",
+    "prebuild": "node scripts/check-config-integrity.mjs",
     "build": "astro check && astro build",
+    "prepreview": "node scripts/check-config-integrity.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
