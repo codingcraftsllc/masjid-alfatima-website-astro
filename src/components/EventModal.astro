@@ -160,8 +160,8 @@
     const eventModal = document.getElementById("event-modal");
     if (!eventModal) return;
 
-    // Stop showing the Muharram modal at midnight Friday, June 20, 2026 (America/Los_Angeles, PDT = UTC-7)
-    const expiresAt = new Date("2026-06-20T07:00:00Z");
+    // Stop showing the Muharram modal at midnight Saturday, June 27, 2026 (America/Los_Angeles, PDT = UTC-7)
+    const expiresAt = new Date("2026-06-27T07:00:00Z");
     if (new Date() >= expiresAt) {
       eventModal.remove();
       return;
