@@ -23,8 +23,8 @@
     </button>
     <div class="event-modal-image">
       <img
-        src="/events/eid-al-adha.jpg"
-        alt="Eid-al-Adha Prayers - Wednesday, May 27th 2026"
+        src="/events/8-9-10-muharram.jpg"
+        alt="8, 9, 10 Muharram Majalis"
         loading="eager"
       />
     </div>
@@ -160,8 +160,8 @@
     const eventModal = document.getElementById("event-modal");
     if (!eventModal) return;
 
-    // Stop showing the Eid-al-Adha modal at midnight May 28, 2026 (America/Los_Angeles, PDT = UTC-7)
-    const expiresAt = new Date("2026-05-28T07:00:00Z");
+    // Stop showing the Muharram modal at midnight Friday, June 20, 2026 (America/Los_Angeles, PDT = UTC-7)
+    const expiresAt = new Date("2026-06-20T07:00:00Z");
     if (new Date() >= expiresAt) {
       eventModal.remove();
       return;
